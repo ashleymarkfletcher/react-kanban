@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 
+import Board from './board'
+
 // store.dispatch({ type: 'INCREMENT' })
 
 const mapStateToProps = (state) => {
+
   console.log('state', state);
+
   return {
-    test: 1
+    lists: state.default.kanbanReducer.lists
   }
 }
 
@@ -14,13 +18,13 @@ class Kanban extends Component {
 
   render() {
 
-  console.log('own', this.props);
+  console.log('props', this.props);
 
     return (
       <div>
-        hellooo
+        <Board lists={this.props.lists}/>
       </div>
-    );
+    )
   }
 }
 

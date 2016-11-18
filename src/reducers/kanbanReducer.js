@@ -2,11 +2,39 @@ const initialState = {
   lists:[
     {
       id:1,
-      title:'title 1'
+      title:'title 1',
+      items:[
+        {
+          id:1,
+          body:'task 1'
+        },
+        {
+          id:2,
+          body:'task 2'
+        },
+        {
+          id:3,
+          body:'task 3'
+        }
+      ]
     },
     {
       id:2,
-      title:'title 2'
+      title:'title 2',
+      items:[
+        {
+          id:1,
+          body:'task 1'
+        },
+        {
+          id:2,
+          body:'task 2'
+        },
+        {
+          id:3,
+          body:'task 3'
+        }
+      ]
     }
   ]
 }

@@ -5,7 +5,7 @@ export default class Board extends Component {
   render() {
     console.log('item props,', this.props);
 
-    return(
+    return (
       <div>
         {this.props.item.body}
       </div>

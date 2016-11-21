@@ -1,20 +1,7 @@
-export function addFriend(name) {
+export function addList(name) {
+  console.log('addlist!', name);
   return {
-    type: 'types.ADD_FRIEND',
-    name
-  };
-}
-
-export function deleteFriend(id) {
-  return {
-    type: 'types.DELETE_FRIEND',
-    id
-  };
-}
-
-export function starFriend(id) {
-  return {
-    type: 'types.STAR_FRIEND',
-    id
-  };
+    type: 'ADD_LIST',
+    payload: name
+  }
 }

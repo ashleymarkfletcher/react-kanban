@@ -11,7 +11,7 @@ export default class Board extends Component {
       return <List list={list}/>
     })
 
-    return(
+    return (
       <div>
         {Lists}
       </div>

@@ -42,20 +42,20 @@ const initialState = {
 export default function kanbanReducer(state = initialState, action) {
   switch (action.type) {
 
-    case 'types.ADD_FRIEND':
-      const newId = state.friends[state.friends.length-1] + 1;
-      return {
-        friends: state.friends.concat(newId),
-        friendsById: {
-          ...state.friendsById,
-          [newId]: {
-            id: newId,
-            name: action.name
-          }
-        }
-      }
+    case 'ADD_LIST':
+      console.log('here', action, state.lists);
+      return Object.assign({}, state, {
+              lists: [
+                ...state.lists,
+                {
+                  id:3,
+                  title:action.payload
+                }
+              ]
+            })
 
     default:
+    console.log('statechange!', state);
       return state;
   }
 }

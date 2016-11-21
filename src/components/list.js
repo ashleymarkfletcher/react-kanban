@@ -6,9 +6,12 @@ export default class List extends Component {
 
   render() {
 
-    const Items = this.props.list.items.map((item) => {
-      return <Item item={item}/>
-    })
+
+      const Items = (this.props.list.items) ? this.props.list.items.map((item) => {
+        return <Item item={item}/>
+      }) : null
+
+
 
     console.log('list props', this.props);
     return(

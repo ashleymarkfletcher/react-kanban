@@ -40,37 +40,44 @@ const initialState = {
 }
 
 export default function kanbanReducer(state = initialState, action) {
+
   switch (action.type) {
 
-    case 'ADD_LIST':
+    case 'ADD_LIST': {
+
       console.log('here', action, state.lists);
-      return Object.assign({}, state, {
-              lists: [
-                ...state.lists,
-                {
-                  id:3,
-                  title:action.payload
-                }
-              ]
-            })
 
-            case 'ADD_TASK':
-              console.log('here', action, state.lists);
-              let newState =  JSON.parse(JSON.stringify(state))
+      return Object.assign({}, state,
+        {
+          lists: [
+            ...state.lists,
+            {
+              id:3,
+              title:action.payload
+            }
+          ]
+        }
+      )
 
-              let index = newState.lists.findIndex((list) => {
-                console.log('list', list.id);
-                return list.id === action.payload.listID
-              })
+    }
 
-              console.log('index', index);
+    case 'ADD_TASK': {
 
-              newState.lists[index].items.push({id:action.payload.name, body:action.payload.name})
+      console.log('here', action, state.lists);
 
-        return newState
+      let newState =  JSON.parse(JSON.stringify(state))
 
-    default:
-    console.log('statechange!', state);
-      return state;
+      let index = newState.lists.findIndex((list) => {
+        return list.id === action.payload.listID
+      })
+
+      newState.lists[index].items.push({id:action.payload.name, body:action.payload.name})
+
+      return newState
+    }
+
+    default: {
+      return state
+    }
   }
 }

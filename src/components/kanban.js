@@ -4,9 +4,7 @@ import { connect } from 'react-redux'
 import Board from './board'
 
 import { addList, addTask } from '../actions/kanbanActions';
-
-
-// store.dispatch({ type: 'INCREMENT' })
+ 
 
 const mapStateToProps = (state) => {
 
@@ -21,10 +19,7 @@ class Kanban extends Component {
 
   render() {
 
-    // this.props.dispatch(addList('test'))
-
-
-  console.log('props', this.props);
+    console.log('props', this.props);
 
     return (
       <div>

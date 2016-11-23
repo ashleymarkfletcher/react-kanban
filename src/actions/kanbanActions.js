@@ -10,6 +10,9 @@ export function addTask(name, listID) {
   console.log('addtask!', name, listID);
   return {
     type: 'ADD_TASK',
-    payload: {name:name, listID:listID}
+    payload: {
+      name: name,
+      listID: listID
+    }
   }
 }

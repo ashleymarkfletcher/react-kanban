@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 import Board from './board'
 
-import { addList } from '../actions/kanbanActions';
+import { addList, addTask } from '../actions/kanbanActions';
 
 
 // store.dispatch({ type: 'INCREMENT' })
@@ -28,8 +28,7 @@ class Kanban extends Component {
 
     return (
       <div>
-        <button onClick={this._addList.bind(this, 'new list')}>add list</button>
-        <Board lists={this.props.lists}/>
+        <Board lists={this.props.lists} addList={this._addList.bind(this)} addTask={this._addTask.bind(this)}/>
       </div>
     )
   }
@@ -37,6 +36,11 @@ class Kanban extends Component {
   _addList(name){
     console.log('here');
     this.props.dispatch(addList(name))
+  }
+
+  _addTask(name, listID){
+    console.log('here');
+    this.props.dispatch(addTask(name, listID))
   }
 }
 

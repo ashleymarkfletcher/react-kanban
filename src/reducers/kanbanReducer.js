@@ -54,6 +54,21 @@ export default function kanbanReducer(state = initialState, action) {
               ]
             })
 
+            case 'ADD_TASK':
+              console.log('here', action, state.lists);
+              let newState =  JSON.parse(JSON.stringify(state))
+
+              let index = newState.lists.findIndex((list) => {
+                console.log('list', list.id);
+                return list.id === action.payload.listID
+              })
+
+              console.log('index', index);
+
+              newState.lists[index].items.push({id:action.payload.name, body:action.payload.name})
+
+        return newState
+
     default:
     console.log('statechange!', state);
       return state;

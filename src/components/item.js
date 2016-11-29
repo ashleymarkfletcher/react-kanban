@@ -7,7 +7,7 @@ export default class Board extends Component {
 
     return (
       <div>
-        {this.props.item.body}
+        {this.props.item.name}
       </div>
     )
 

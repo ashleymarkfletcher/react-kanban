@@ -1,8 +1,8 @@
-export function addList(name) {
-  console.log('addlist!', name);
+export function addList(list) {
+  console.log('addlist!', list);
   return {
     type: 'ADD_LIST',
-    payload: name
+    payload: list
   }
 }
 

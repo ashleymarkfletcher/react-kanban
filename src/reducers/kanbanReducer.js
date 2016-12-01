@@ -12,18 +12,19 @@ export default function kanbanReducer(state = initialState, action) {
 
       let newState =  JSON.parse(JSON.stringify(state))
 
-      // let listIndex = newState.lists.findIndex((list) => {
-      //   return action.payload.id == list.id
-      // })
-      //
-      // if (lists) {
-      //
-      // }
 
-      newState.lists.push(action.payload)
+        let listIndex = newState.lists.findIndex((list) => {
+          return list.id === action.payload.id
+        })
+
+        if (listIndex !== -1) {
+          newState.lists[listIndex] = action.payload
+        } else {
+          newState.lists.push(action.payload)
+        }
+
 
       return newState
-
 
     }
 

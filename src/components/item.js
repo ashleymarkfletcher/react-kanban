@@ -8,6 +8,8 @@ export default class Board extends Component {
     return (
       <div>
         {this.props.item.name}
+        <button>edit</button>
+        <button>delete</button>
       </div>
     )
 

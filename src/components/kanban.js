@@ -79,14 +79,11 @@ class Kanban extends Component {
       console.log('error adding item: ', err);
     });
 
-    // this.props.dispatch(addTask(name, listID))
   }
 
 
 
   _addList(name) {
-
-    console.log('here');
 
     // Get a key for a new Post.
     let key = firebaseDb.ref().child('lists').push().key;
@@ -102,7 +99,6 @@ class Kanban extends Component {
     }).catch((err) => {
       console.log('error adding list: ', err);
     })
-
 
   }
 }

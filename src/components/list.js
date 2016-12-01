@@ -15,6 +15,8 @@ export default class List extends Component {
     return(
       <div>
         <h2>{this.props.list.name}</h2>
+        <button>edit</button>
+        <button>delete</button>
         <button onClick={this.props.addTask.bind(this, 'new task', this.props.list.id)}>new task</button>
         {Items}
       </div>

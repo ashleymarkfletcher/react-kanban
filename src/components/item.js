@@ -9,7 +9,7 @@ export default class Board extends Component {
       <div>
         {this.props.item.name}
         <button>edit</button>
-        <button>delete</button>
+        <button onClick={this.props.deleteTask.bind(this, this.props.listID, this.props.item.id)}>delete</button>
       </div>
     )
 

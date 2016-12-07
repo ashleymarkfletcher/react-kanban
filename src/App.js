@@ -6,6 +6,7 @@ import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import { firebaseApp } from './firebase'
 import injectTapEventPlugin from 'react-tap-event-plugin';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 injectTapEventPlugin();
 
@@ -17,12 +18,13 @@ const store = createStore(kanbanApp);
 
 class App extends Component {
 
-
   render() {
 
     return (
       <Provider store={store}>
-        <Kanban/>
+        <MuiThemeProvider>
+          <Kanban/>
+        </MuiThemeProvider>
       </Provider>
     )
   }

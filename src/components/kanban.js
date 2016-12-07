@@ -57,7 +57,12 @@ class Kanban extends Component {
 
     return (
       <div>
-        <Board lists={this.props.lists} addList={this._addList.bind(this)} addTask={this._addTask.bind(this)}/>
+        <Board
+          lists={this.props.lists}
+          addList={this._addList.bind(this)}
+          addTask={this._addTask.bind(this)}
+          deleteTask={this._deleteTask.bind(this)}
+        />
       </div>
     )
   }
@@ -78,6 +83,20 @@ class Kanban extends Component {
     }).catch((err) => {
       console.log('error adding item: ', err);
     });
+
+  }
+
+  _deleteTask(listID, taskID){
+
+    let ref = firebaseDb.ref('lists/' + listID + '/items').child(taskID).remove()
+      .then(() => {
+        console.log("Remove succeeded.")
+        // TODO: dispatch success
+
+      })
+      .catch((error) => {
+        console.log("Remove failed: " + error.message)
+      });
 
   }
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import List from './list'
+import ListContainer from './list'
 
 export default class Board extends Component {
 
@@ -8,7 +8,12 @@ export default class Board extends Component {
     console.log('board props,', this.props);
 
     const Lists = this.props.lists.map((list) => {
-      return <List list={list} addTask={this.props.addTask.bind(this)} key={list.id}/>
+      return <ListContainer
+        list={list}
+        addTask={this.props.addTask.bind(this)}
+        deleteTask={this.props.deleteTask.bind(this)} 
+        key={list.id}
+      />
     })
 
     return (

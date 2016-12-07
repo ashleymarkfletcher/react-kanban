@@ -1,5 +1,6 @@
 const initialState = {
-  lists:[]
+  lists:[],
+  editTaskID: null
 }
 
 export default function kanbanReducer(state = initialState, action) {

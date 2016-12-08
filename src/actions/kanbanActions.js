@@ -16,3 +16,11 @@ export function addTask(name, listID) {
     }
   }
 }
+
+export function toggleEditTask(taskID) {
+  console.log('toggleTask!', taskID);
+  return {
+    type: 'TOGGLE_EDIT_TASK',
+    payload: taskID
+  }
+}

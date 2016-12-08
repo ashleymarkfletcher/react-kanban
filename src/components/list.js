@@ -14,6 +14,7 @@ export default class ListContainer extends Component {
         key={item.id}
         deleteTask={this.props.deleteTask.bind(this)}
         listID={this.props.list.id}
+        toggleEditTask={this.props.toggleEditTask.bind(this)}
         />
     }) : null
 

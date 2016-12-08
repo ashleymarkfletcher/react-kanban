@@ -8,7 +8,7 @@ export default class Board extends Component {
     return (
       <div>
         {this.props.item.name}
-        <button>edit</button>
+        <button onClick={this.props.toggleEditTask.bind(this, this.props.item.id)}>edit</button>
         <button onClick={this.props.deleteTask.bind(this, this.props.listID, this.props.item.id)}>delete</button>
       </div>
     )

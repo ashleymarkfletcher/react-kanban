@@ -11,7 +11,8 @@ export default class Board extends Component {
       return <ListContainer
         list={list}
         addTask={this.props.addTask.bind(this)}
-        deleteTask={this.props.deleteTask.bind(this)} 
+        deleteTask={this.props.deleteTask.bind(this)}
+        toggleEditTask={this.props.toggleEditTask.bind(this)}
         key={list.id}
       />
     })

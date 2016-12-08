@@ -4,7 +4,7 @@ import { firebaseDb } from '../firebase';
 
 import Board from './board'
 
-import { addList, addTask } from '../actions/kanbanActions';
+import { addList, addTask, toggleEditTask } from '../actions/kanbanActions';
 
 
 const mapStateToProps = (state) => {
@@ -62,6 +62,7 @@ class Kanban extends Component {
           addList={this._addList.bind(this)}
           addTask={this._addTask.bind(this)}
           deleteTask={this._deleteTask.bind(this)}
+          toggleEditTask={this._toggleEditTask.bind(this)}
         />
       </div>
     )
@@ -100,7 +101,11 @@ class Kanban extends Component {
 
   }
 
+  _toggleEditTask(taskID){
 
+    this.props.dispatch(toggleEditTask(taskID))
+
+  }
 
   _addList(name) {
 

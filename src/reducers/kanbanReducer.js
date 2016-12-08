@@ -44,6 +44,10 @@ export default function kanbanReducer(state = initialState, action) {
       return newState
     }
 
+    case 'TOGGLE_EDIT_TASK': {
+      return { ...state, editTaskID: action.payload }
+    }
+
     default: {
       return state
     }

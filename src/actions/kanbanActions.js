@@ -24,3 +24,11 @@ export function toggleEditTask(taskID) {
     payload: taskID
   }
 }
+
+export function toggleEditList(listID) {
+  console.log('toggleEditList!', listID);
+  return {
+    type: 'TOGGLE_EDIT_LIST',
+    payload: listID
+  }
+}

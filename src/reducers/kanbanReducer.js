@@ -1,6 +1,7 @@
 const initialState = {
   lists:[],
-  editTaskID: null
+  editTaskID: null,
+  editListID: null
 }
 
 export default function kanbanReducer(state = initialState, action) {
@@ -46,6 +47,10 @@ export default function kanbanReducer(state = initialState, action) {
 
     case 'TOGGLE_EDIT_TASK': {
       return { ...state, editTaskID: action.payload }
+    }
+
+    case 'TOGGLE_EDIT_LIST': {
+      return { ...state, editListID: action.payload }
     }
 
     default: {

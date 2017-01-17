@@ -4,7 +4,7 @@ import { firebaseDb } from '../firebase';
 
 import Board from './board'
 
-import { addList, addTask, toggleEditTask } from '../actions/kanbanActions';
+import { addList, addTask, toggleEditTask, toggleEditList } from '../actions/kanbanActions';
 
 class Kanban extends Component {
 
@@ -50,6 +50,9 @@ class Kanban extends Component {
           toggleEditTask={this._toggleEditTask.bind(this)}
           editTaskID={this.props.editTaskID}
           saveTask={this._saveTask.bind(this)}
+          toggleEditList={this._toggleEditList.bind(this)}
+          editListID={this.props.editListID}
+          saveList={this._saveList.bind(this)}
         />
       </div>
     )
@@ -94,6 +97,12 @@ class Kanban extends Component {
 
   }
 
+  _toggleEditList(listID){
+
+    this.props.dispatch(toggleEditList(listID))
+
+  }
+
   _addList(name) {
 
     // Get a key for a new Post.
@@ -126,13 +135,27 @@ class Kanban extends Component {
       console.log("update failed: " + error.message)
     });
   }
+
+  _saveList(listID, listName){
+    let ref = firebaseDb.ref('lists/' + listID + '/name').set(listName)
+    .then(() => {
+      console.log("update succeeded.")
+      // TODO: dispatch success
+
+    })
+    .catch((error) => {
+      console.log("update failed: " + error.message)
+    });
+  }
+
 }
 
 const mapStateToProps = (state) => {
 
   return {
     lists: state.kanbanReducer.lists,
-    editTaskID: state.kanbanReducer.editTaskID
+    editTaskID: state.kanbanReducer.editTaskID,
+    editListID: state.kanbanReducer.editListID
   }
 }
 

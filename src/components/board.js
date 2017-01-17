@@ -16,6 +16,9 @@ export default class Board extends Component {
         key={list.id}
         editTaskID={this.props.editTaskID}
         saveTask={this.props.saveTask.bind(this)}
+        toggleEditList={this.props.toggleEditList.bind(this)}
+        editListID={this.props.editListID}
+        saveList={this.props.saveList.bind(this)}
       />
     })
 

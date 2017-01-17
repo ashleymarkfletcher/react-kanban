@@ -6,22 +6,11 @@ import Board from './board'
 
 import { addList, addTask, toggleEditTask } from '../actions/kanbanActions';
 
-
-const mapStateToProps = (state) => {
-
-  console.log('stateinkanban', state);
-
-  return {
-    lists: state.kanbanReducer.lists
-  }
-}
-
 class Kanban extends Component {
 
   componentDidMount() {
 
     firebaseDb.ref().child('lists').on('value', snap => {
-      console.log('snapppp', snap.val());
 
       if (snap.val() != null) {
 
@@ -40,8 +29,6 @@ class Kanban extends Component {
           return list
         })
 
-        console.log('list!!!!!!!!!!!!!!', lists);
-
         lists.forEach((list) => {
 
           this.props.dispatch(addList(list))
@@ -53,8 +40,6 @@ class Kanban extends Component {
 
   render() {
 
-    console.log('props', this.props);
-
     return (
       <div>
         <Board
@@ -63,6 +48,8 @@ class Kanban extends Component {
           addTask={this._addTask.bind(this)}
           deleteTask={this._deleteTask.bind(this)}
           toggleEditTask={this._toggleEditTask.bind(this)}
+          editTaskID={this.props.editTaskID}
+          saveTask={this._saveTask.bind(this)}
         />
       </div>
     )
@@ -124,6 +111,28 @@ class Kanban extends Component {
       console.log('error adding list: ', err);
     })
 
+  }
+
+  _saveTask(listID, taskID, taskName){
+    let ref = firebaseDb.ref('lists/' + listID + '/items').child(taskID).update({
+      name: taskName
+    })
+    .then(() => {
+      console.log("update succeeded.")
+      // TODO: dispatch success
+
+    })
+    .catch((error) => {
+      console.log("update failed: " + error.message)
+    });
+  }
+}
+
+const mapStateToProps = (state) => {
+
+  return {
+    lists: state.kanbanReducer.lists,
+    editTaskID: state.kanbanReducer.editTaskID
   }
 }
 

@@ -14,6 +14,8 @@ export default class Board extends Component {
         deleteTask={this.props.deleteTask.bind(this)}
         toggleEditTask={this.props.toggleEditTask.bind(this)}
         key={list.id}
+        editTaskID={this.props.editTaskID}
+        saveTask={this.props.saveTask.bind(this)}
       />
     })
 

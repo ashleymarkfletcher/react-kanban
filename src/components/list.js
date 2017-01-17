@@ -8,17 +8,18 @@ export default class ListContainer extends Component {
   render() {
 
     const Items = (this.props.list.items) ? this.props.list.items.map((item) => {
-      console.log('itemidddd', item.id);
+
       return <Item
         item={item}
         key={item.id}
         deleteTask={this.props.deleteTask.bind(this)}
         listID={this.props.list.id}
         toggleEditTask={this.props.toggleEditTask.bind(this)}
+        editTaskID={this.props.editTaskID}
+        saveTask={this.props.saveTask.bind(this)}
         />
     }) : null
 
-    console.log('list props', this.props);
     return(
       <div>
         <h2>{this.props.list.name}</h2>
